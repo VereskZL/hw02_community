@@ -4,7 +4,7 @@ from .models import Post, Group
 
 # Главная страница
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.all()[:10]
     # В словаре context отправляем информацию в шаблон
     context = {
         'posts': posts,
@@ -23,7 +23,7 @@ def group_posts(request, slug):
     # Метод .filter позволяет ограничить поиск по критериям.
     # Это аналог добавления
     # условия WHERE group_id = {group_id}
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = Post.group.all()
     context = {
         'group': group,
         'posts': posts,

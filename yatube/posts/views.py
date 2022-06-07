@@ -19,11 +19,7 @@ def group_posts(request, slug):
     # В нашем случае в переменную group будут переданы объекты модели Group,
     # поле slug у которых соответствует значению slug в запросе
     group = get_object_or_404(Group, slug=slug)
-
-    # Метод .filter позволяет ограничить поиск по критериям.
-    # Это аналог добавления
-    # условия WHERE group_id = {group_id}
-    posts = Post.group.all()
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
     context = {
         'group': group,
         'posts': posts,

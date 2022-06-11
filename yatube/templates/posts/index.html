@@ -1,12 +1,10 @@
-{% extends "base.html" %}<!-- Используется html 5 версии -->
-{% load static %}
-<html lang="ru"> <!-- Язык сайта - русский -->
+{% extends "base.html" %}
+<html>
   <head>    
     <title>{% block title %}Последние обновления на сайте{% endblock%}</title>
   </head>
   <body>
     <main> 
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
       <div>  
         {% block content %}   
         {% if title == 'Главная страница' %}

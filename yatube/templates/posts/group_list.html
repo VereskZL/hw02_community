@@ -1,13 +1,7 @@
 {% extends "base.html" %}
-<html>
-  <head>    
-
-  </head>
-  <body>
-    <main>
-      {% block content %} 
-      <div class="container">
-        <h1>Лев Толстой – зеркало русской революции.</h1>
+{% block title %}Записи сообщества {{group}}{% endblock %}
+{% block content %} 
+        <h1>Записи сообщества {{group}}</h1>
         {% for post in posts %}
           <ul>
             <li>
@@ -24,6 +18,3 @@
           {% if not forloop.last %}<hr>{% endif %}
         {% endfor %} 
         {% endblock %}
-      </div>  
-    </main>
-  </body>

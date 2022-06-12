@@ -1,38 +1,30 @@
-{% extends "base.html" %}
-<html>
-  <head>    
-    <title>{% block title %}Последние обновления на сайте{% endblock%}</title>
-  </head>
-  <body>
-    <main> 
-      <div>  
-        {% block content %}   
-        {% if title == 'Главная страница' %}
-          <h1{{header}}</h1>
-        {% else %} 
-          <h1>А так работает</h1>
-        {% endif %} 
-        <article>
+{% extends "base.html" %}  
+<title>{% block title %}Последние обновления на сайте{% endblock%}</title>
+{% block content %}   
+{% if title == 'Главная страница' %}
+  <h1{{header}}</h1>
+{% else %} 
+  <h1>Главная страница</h1>
+{% endif %} 
+<article>
+  <ul>
+    <li>
+      {{title}}
+        {% for post in posts %}
           <ul>
             <li>
-              {{title}}
-              {% for post in posts %}
-              <ul>
-                <li>
-                  Автор: {{ post.author.get_full_name }}
-                </li>
-                <li>
-                  Дата публикации: {{ post.pub_date|date:"d E Y" }}
-                </li>
-              </ul>
-              <p>{{ post.text }}</p>      
-              {% if post.group %}   
-                <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
-              {% endif %}  
-              {% if not forloop.last %}<hr>{% endif %}
-            {% endfor %}
-            {% endblock %}
-        </article>
-      </div>
-    </main>
-  </body>
+              Автор: {{ post.author.get_full_name }}
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+          </ul>
+          <p>{{ post.text }}</p>      
+          {% if post.group %}   
+            <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
+          {% endif %}  
+          {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %}           
+</article>
+{% endblock %}
+  

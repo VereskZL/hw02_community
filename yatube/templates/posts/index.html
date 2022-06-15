@@ -2,8 +2,8 @@
 {% block title %}Последние обновления на сайте{% endblock%}
 {% block content %}   
   <h1>Главная страница</h1>
-<article>
-        {% for post in posts %}
+      {% for post in posts %}
+        <article>
           <ul>
             <li>
               Автор: {{ post.author.get_full_name }}
@@ -17,7 +17,7 @@
             <a href="{% url 'posts:group_posts' post.group.slug %}">все записи группы</a>
           {% endif %}  
           {% if not forloop.last %}<hr>{% endif %}
-        {% endfor %}           
-</article>
+        </article>
+      {% endfor %}           
 {% endblock %}
   

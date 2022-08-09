@@ -34,3 +34,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-pub_date"]
+
+
+class PostForm(models.Model):
+    text = models.TextField()
+    group = models.CharField(max_length=100,)
